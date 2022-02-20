@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import HandleEventReact from "./EventHandler/HandleEventReact";
+import LoginForm from "./EventHandler/LoginForm";
+import RenderWithMap from "./RenderWithMap/RenderWithMap";
+import BaiTapChonXe from "./StateDemo/BaiTapChonXe/BaiTapChonXe";
+import BaiTapTangGiamFont from "./StateDemo/BaiTapTangGiamFont/BaiTapTangGiamFont";
+import StyleComponents from "./StyleComponent/StyleComponents";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <HandleEventReact />
+      <LoginForm /> */}
+      {/* <StyleComponents /> */}
+      {/* <BaiTapChonXe />
+      <hr />
+      <BaiTapTangGiamFont /> */}
+      <RenderWithMap />
     </div>
   );
 }
