@@ -1,5 +1,10 @@
 import HandleEventReact from "./EventHandler/HandleEventReact";
 import LoginForm from "./EventHandler/LoginForm";
+import BaiTapQLSP from "./Props/BaiTapQLSP/BaiTapQLSP";
+import BaiTapXemChiTiet from "./Props/BaiTapXemChiTiet/BaiTapXemChiTiet";
+import DemoProps from "./Props/DemoProps/DemoProps";
+import DemoPropsChildern from "./Props/DemoPropsChildren/DemoPropsChildern";
+import ExcerciseCarStore from "./Props/ExcerciseCarStore/ExcerciseCarStore";
 import RenderWithMap from "./RenderWithMap/RenderWithMap";
 import BaiTapChonXe from "./StateDemo/BaiTapChonXe/BaiTapChonXe";
 import BaiTapTangGiamFont from "./StateDemo/BaiTapTangGiamFont/BaiTapTangGiamFont";
@@ -14,7 +19,12 @@ function App() {
       {/* <BaiTapChonXe />
       <hr />
       <BaiTapTangGiamFont /> */}
-      <RenderWithMap />
+      {/* <RenderWithMap /> */}
+      {/* <DemoProps /> */}
+      {/* <BaiTapQLSP /> */}
+      {/* <BaiTapXemChiTiet /> */}
+      {/* <ExcerciseCarStore /> */}
+      <DemoPropsChildern />
     </div>
   );
 }
