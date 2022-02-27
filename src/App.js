@@ -1,3 +1,4 @@
+import BaiTapChonXeRedux from "./DemoRedux/BaiTapChonXeRedux/BaiTapChonXeRedux";
 import HandleEventReact from "./EventHandler/HandleEventReact";
 import LoginForm from "./EventHandler/LoginForm";
 import BaiTapQLSP from "./Props/BaiTapQLSP/BaiTapQLSP";
@@ -22,9 +23,10 @@ function App() {
       {/* <RenderWithMap /> */}
       {/* <DemoProps /> */}
       {/* <BaiTapQLSP /> */}
-      {/* <BaiTapXemChiTiet /> */}
+      <BaiTapXemChiTiet />
       {/* <ExcerciseCarStore /> */}
-      <DemoPropsChildern />
+      {/* <DemoPropsChildern /> */}
+      {/* <BaiTapChonXeRedux /> */}
     </div>
   );
 }

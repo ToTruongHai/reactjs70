@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import SanPhamProps from "./SanPhamProps";
 
+import { connect } from "react-redux";
+import GioHang from "./GioHang";
+
 const dataPhone = [
   {
     maSP: 1,
@@ -40,42 +43,45 @@ const dataPhone = [
   },
 ];
 
-export default class BaiTapXemChiTiet extends Component {
-  state = {
-    sanPhamChiTiet: {
-      maSP: 1,
-      tenSP: "VinSmart Live",
-      manHinh: "AMOLED, 6.2, Full HD+",
-      heDieuHanh: "Android 9.0 (Pie)",
-      cameraTruoc: "20 MP",
-      cameraSau: "Chính 48 MP & Phụ 8 MP, 5 MP",
-      ram: "4 GB",
-      rom: "64 GB",
-      giaBan: 5700000,
-      hinhAnh: "./img/vsphone.jpg",
-    },
-  };
-  setDetailPhone = (phone) => {
-    this.setState({
-      sanPhamChiTiet: {
-        maSP: phone.maSP,
-        tenSP: phone.tenSP,
-        manHinh: phone.manHinh,
-        heDieuHanh: phone.heDieuHanh,
-        cameraTruoc: phone.cameraTruoc,
-        cameraSau: phone.cameraSau,
-        ram: phone.ram,
-        rom: phone.rom,
-        giaBan: phone.giaBan,
-        hinhAnh: phone.hinhAnh,
-      },
-    });
-  };
+class BaiTapXemChiTiet extends Component {
+  // state = {
+  //   sanPhamChiTiet: {
+  //     maSP: 1,
+  //     tenSP: "VinSmart Live",
+  //     manHinh: "AMOLED, 6.2, Full HD+",
+  //     heDieuHanh: "Android 9.0 (Pie)",
+  //     cameraTruoc: "20 MP",
+  //     cameraSau: "Chính 48 MP & Phụ 8 MP, 5 MP",
+  //     ram: "4 GB",
+  //     rom: "64 GB",
+  //     giaBan: 5700000,
+  //     hinhAnh: "./img/vsphone.jpg",
+  //   },
+  // };
+  // setDetailPhone = (phone) => {
+  //   this.setState({
+  //     sanPhamChiTiet: {
+  //       maSP: phone.maSP,
+  //       tenSP: phone.tenSP,
+  //       manHinh: phone.manHinh,
+  //       heDieuHanh: phone.heDieuHanh,
+  //       cameraTruoc: phone.cameraTruoc,
+  //       cameraSau: phone.cameraSau,
+  //       ram: phone.ram,
+  //       rom: phone.rom,
+  //       giaBan: phone.giaBan,
+  //       hinhAnh: phone.hinhAnh,
+  //     },
+  //   });
+  // };
   renderPhone = () => {
     return dataPhone.map((phone, index) => {
       return (
         <div className="col-4" key={index}>
-          <SanPhamProps phone={phone} xemChiTiet={this.setDetailPhone}/>
+          <SanPhamProps
+            phone={phone}
+            // xemChiTiet={this.setDetailPhone}
+          />
           {/* <div className="card">
             <img src={phone.hinhAnh} height={300} alt="..." />
             <div className="card-body">
@@ -89,16 +95,20 @@ export default class BaiTapXemChiTiet extends Component {
     });
   };
   render() {
+    // console.log('props: ', this.props)
     return (
       <div className="container">
+        <h3 className="text-center">Gio hang</h3>
+        <GioHang></GioHang>
+        <hr />
         <h3 className="text-center display-4">Danh Sach San Pham</h3>
         <div className="row">{this.renderPhone()}</div>
         <div className="mt-2">
           <div className="row">
             <div className="col-4">
-              <h3 className="text-center">{this.state.sanPhamChiTiet.tenSP}</h3>
+              <h3 className="text-center">{this.props.spChiTiet.tenSP}</h3>
               <img
-                src={this.state.sanPhamChiTiet.hinhAnh}
+                src={this.props.spChiTiet.hinhAnh}
                 width={`100%`}
                 height={`300px`}
                 alt="..."
@@ -110,27 +120,27 @@ export default class BaiTapXemChiTiet extends Component {
                 <thead>
                   <tr>
                     <th>Man Hinh</th>
-                    <th>{this.state.sanPhamChiTiet.manHinh}</th>
+                    <th>{this.props.spChiTiet.manHinh}</th>
                   </tr>
                   <tr>
                     <th>He Dieu Hanh</th>
-                    <th>{this.state.sanPhamChiTiet.heDieuHanh}</th>
+                    <th>{this.props.spChiTiet.heDieuHanh}</th>
                   </tr>
                   <tr>
                     <th>Camera Truoc</th>
-                    <th>{this.state.sanPhamChiTiet.cameraTruoc}</th>
+                    <th>{this.props.spChiTiet.cameraTruoc}</th>
                   </tr>
                   <tr>
                     <th>Camera Sau</th>
-                    <th>{this.state.sanPhamChiTiet.cameraSau}</th>
+                    <th>{this.props.spChiTiet.cameraSau}</th>
                   </tr>
                   <tr>
                     <th>RAM</th>
-                    <th>{this.state.sanPhamChiTiet.ram}</th>
+                    <th>{this.props.spChiTiet.ram}</th>
                   </tr>
                   <tr>
                     <th>ROM</th>
-                    <th>{this.state.sanPhamChiTiet.rom}</th>
+                    <th>{this.props.spChiTiet.rom}</th>
                   </tr>
                 </thead>
               </table>
@@ -141,3 +151,10 @@ export default class BaiTapXemChiTiet extends Component {
     );
   }
 }
+//mapStatetoprops lay du lieu ve
+const mapStateTopProps = (rootReducer) => {
+  return {
+    spChiTiet: rootReducer.productDetailReducer,
+  };
+};
+export default connect(mapStateTopProps)(BaiTapXemChiTiet);
