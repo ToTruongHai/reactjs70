@@ -1,0 +1,16 @@
+/* 
+    Cấu trúc file css khi start ứng dụng
+    thì cấu trúc thư mục bị thay đổi
+    => nên thuộc tính url sẽ bị thay đổi
+    nên khi đường dẫn từ module nên đi ra thư mục
+    và đưa vào đường dẫn tuyệt đối
+*/
+
+@font-face {
+    font-family: fontGame;
+    src: url('../../assets/BaiTapGameXucXac/Font/Pony.ttf');
+}
+
+.fontGame {
+    font-family: fontGame;
+}

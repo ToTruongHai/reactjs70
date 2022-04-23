@@ -26,10 +26,24 @@ class GioHang extends Component {
                 </td>
                 <td>{spGioHang.tenSP}</td>
                 <td>{spGioHang.giaBan}</td>
-                <td>{spGioHang.soLuong}</td>
+                <td>
+                  <button className="btn btn-primary"
+                  onClick={() => {
+                    this.props.tangGiamSoLuong(spGioHang.maSP, -1);
+                  }}
+                  >-</button>
+                  {spGioHang.soLuong}
+                  <button className="btn btn-primary ml-1"
+                  onClick={() => {
+                    this.props.tangGiamSoLuong(spGioHang.maSP, 1);
+                  }}>+</button>
+                  </td>
                 <td>{spGioHang.giaBan * spGioHang.soLuong}</td>
                 <td>
-                  <button className="btn btn-danger">xoa</button>
+                  <button className="btn btn-danger"
+                  onClick={()=>{
+                    this.props.xoaGioHang(spGioHang.maSP);
+                  }}>xoa</button>
                 </td>
               </tr>
             );
@@ -47,4 +61,24 @@ const mapStateTopProps = (rootReducer) => {
   };
 };
 
-export default connect(mapStateTopProps)(GioHang);
+const mapDispatchToProps = (dispatch) => {
+  return{
+    xoaGioHang: (maSanPhamClick) => {
+      const action = {
+        type: 'XOA_GIO_HANG',
+        maSanPhamClick: maSanPhamClick
+      }
+      dispatch(action);
+    },
+    tangGiamSoLuong: (maSanPham, soLuong) => {
+      const action = {
+        type: 'TANG_GIAM_SO_LUONG',
+        maSanPham: maSanPham,
+        soLuong: soLuong
+      }
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateTopProps,mapDispatchToProps)(GioHang);
